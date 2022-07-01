@@ -19,6 +19,7 @@ class Products(models.Model):
 	description = models.TextField( blank=True)
 	image = models.ImageField(upload_to='images', blank=True, null=True)
 
+
 	@staticmethod
 	def get_products_by_id(ids):
 		return Products.objects.filter(id__in=ids)
@@ -27,7 +28,7 @@ class Products(models.Model):
 	def get_all_products():
 		return Products.objects.all()
 
-	@staticmethod
+	staticmethod
 	def get_all_products_by_categoryid(category_id):
 		if category_id:
 			return Products.objects.filter(category=category_id)
