@@ -31,3 +31,10 @@ def add_to_cart(request, slug):
 def cart(request):
     cart=get_object_or_404(Cart, user=request.user)
     return render(request, 'cart.html', context={"orders":cart.orders.all()})
+
+def delete_cart(request):
+    cart = request.user.cart
+    if cart:
+        cart.orders.all().delete()
+        cart.delete()
+    return redirect('index')
