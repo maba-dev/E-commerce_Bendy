@@ -1,8 +1,5 @@
-from audioop import reverse
-from pyexpat import model
-from statistics import mode
+from django.urls import reverse
 from django.db import models
-from django.forms import modelformset_factory
 
 from shop.settings import AUTH_USER_MODEL
 
