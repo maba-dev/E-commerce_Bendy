@@ -17,16 +17,3 @@
     python manage.py migrate
 # creation de user dans la page admin
     python3 manage.py createsuperuser
-
-user = request.user
-    product = product
-    cart, _ = Cart.objects.get_or_create(user=user)
-    order, created = Order.objects.get_or_create(user=user, product=product) 
-
-    if created:
-        cart.orders.add(order)
-        cart.save()
-    else:
-        order.quantity += 1
-        order.save()
-    return redirect(reverse("product", kwargs={"slug": slug}))

@@ -1,3 +1,4 @@
+from time import timezone
 from django.urls import reverse
 from django.db import models
 
@@ -40,5 +41,12 @@ class Cart(models.Model):
     user = models.OneToOneField(AUTH_USER_MODEL, on_delete=models.CASCADE)
     orders = models.ManyToManyField(Order)
 
+    def delete(self, *args, **kwargs):
+        for order in self.orders.all():
+            order.ordered = True
+            order.ordered_date = timezone.now()
+            order.save()
+        self.orders.clear()
+        super().delete(*args, **kwargs)
     def __str__(self):
         return self.user.username
