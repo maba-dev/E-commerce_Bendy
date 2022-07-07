@@ -13,7 +13,7 @@ def signup(request):
         password = request.POST.get("password")
         user = User.objects.create_user(username=username, password=password)
         login(request, user)
-        return redirect('index')
+        return redirect('home')
     return render(request, 'accounts/signup.html')
 
 def login_user(request):
@@ -24,9 +24,9 @@ def login_user(request):
         user = authenticate(username=username, password=password)
         if user:
             login(request, user)
-            return redirect('index')
-    return render(request, 'accounts/signup.html')
+            return redirect('home')
+    return render(request, 'accounts/login.html')
 
 def logout_user(request):
     logout(request)
-    return redirect('index')
+    return redirect('home')

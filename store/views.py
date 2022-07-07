@@ -6,9 +6,14 @@ from store.models import Product, Cart, Order
 from django.urls import reverse
 
 
+
+
 def index(request):
     products = Product.objects.all()
     return render(request, 'index.html', context={"products": products})
+def home(request):
+    products = Product.objects.all()
+    return render(request, 'home.html', context={"products": products})
 
 def product_detail(request, slug):
     product = get_object_or_404(Product, slug=slug)

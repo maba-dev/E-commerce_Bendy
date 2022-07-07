@@ -8,9 +8,9 @@
 # création de projet dans Django
     django-admin startproject shop .
 # création de l'application dans django
-    python3 manage.py startapp store
+    python manage.py startapp store
 # execution de l'application en local
-    python3 manage.py runserver
+    python manage.py runserver
 
 # commandes de migration de ma base de données
     python manage.py makemigrations

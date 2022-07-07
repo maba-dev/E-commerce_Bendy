@@ -1,39 +1,104 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       
     <title> Bendy E-commerce Website</title>
-      
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+      nav{
+        background-color: #7bc4e1;
+
+      }
+      .one-edge-shadow {
+                box-shadow: 0 8px 2px -5px rgb(246, 245, 245);
+      }
+      .display-8{
+                font-weight: 200;
+                font-size: 30px;
+
+      }
+    </style>
 </head>
 <body>
-  <a href="{% url 'index' %}">
-    <h4>La Boutique de Bendy</h4>
-  </a>
+  <nav class="one-edge-shadow navbar navbar-light sticky-top navbar navbar-expand-lg text-white">
+    <a class="navbar-brand ms-3 text-dark" href="{% url 'home' %}">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+      <img src="{% static 'style/images/logo_bendy.jpeg' %}" class="u-logo-image u-logo-image-1"  style="width:40px;height:40px;">
+    </a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'index' %}">
+            <button type="button" class="btn btn-primary">Boutique de produits</button> 
+            <span class="sr-only">(current)</span></a>
 
-  {% if user.is_authenticated %}
-    {{ user.username }}
-        
-    <a href="{% url 'logout' %}">Déconnection</a>
-  {% else %}
+        </li>
+      </ul>
 
-    <a href="{% url 'login' %}">Connexion</a>
-    <a href="{% url 'signup' %}">S'inscrire</a>
+      <ul class=" navbar-nav my-2 my-lg-0">
+        {% if user.cart %}
+        <li class="nav-item active">
+          <li>
 
-  {% endif %}
+            <img src="https://www.freepnglogos.com/uploads/shopping-cart-png/shopping-cart-svg-png-icon-download-28.png" style="width:20px;height:20px,color:text-light;">
+          </li>
+          <a class="nav-link" href="{% url 'cart' %}">
+            <button type="button" class="btn btn-primary">Panier({{user.cart.orders.count}}) </button>
+            
+            <span class="sr-only">(current)</span>
+        {% endif %}
 
+          </a>
+        </li>
+        {% if user.is_authenticated %}
+          <li>
+            {{ user.username }}
+          </li>
+          <li class="nav-item active ">
+            <a class="nav-link" href="{% url 'logout' %}"><button type="button" class="btn btn-primary">Déconnection</button>
+               <span class="sr-only">(current)</span></a>
+          </li>
+        {% else %}
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'login' %}">Connexion <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'signup' %}">S'inscrire <span class="sr-only">(current)</span></a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
 
-  {% if user.cart %}
-    <p>
-      <a href="{% url 'cart' %}">Voir le panier({{user.cart.orders.count}})</a>
-    </p>
-  {% endif %}
-
-    <!---->
-    {% block content %}{% endblock %}
+  </nav>
+  
+  
     
+    {% block content %}{% endblock %}
+      
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+    <footer class="bg-light text-center text-lg-start">
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        <a href="{% url 'home' %}"> Boutique de Bendi
+          <img src="{% static 'style/images/logo_bendy.jpeg' %}" class="u-logo-image u-logo-image-1" style="width:40px;height:40px;">
+        </a>
+      </div>
+      <!-- Copyright -->
+    </footer>
 </body>
 </html>
