@@ -26,3 +26,6 @@
     python manage.py migrate
 # creation de user dans la page admin
     python3 manage.py createsuperuser
+
+
+Author: Mamadou Cherif Ba(email: 2744@holbertonschool.com)
