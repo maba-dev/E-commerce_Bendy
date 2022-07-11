@@ -13,7 +13,7 @@
 
 # Page d'acceuil après l'exécution de la commande ``python manage.py runserver`` dans le terminale
 
-    ![]("./store/static/style/images/Acceuil_page.png")
+    ![](store/static/style/images/Acceuil_page.png)
 
 # création de projet dans Django
     django-admin startproject shop .
