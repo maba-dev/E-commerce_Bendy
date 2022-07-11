@@ -11,9 +11,10 @@
     6- pip install django
     7-python manage.py runserver
 
+
 # Page d'acceuil après l'exécution de la commande ``python manage.py runserver`` dans le terminale
 
-    ![](store/static/style/images/Acceuil_page.png)
+   ![2022-07-11 (4)](https://user-images.githubusercontent.com/77069769/178287801-e2aecc81-8a10-4ef3-ae2c-e81b90be7717.png)
 
 # création de projet dans Django
     django-admin startproject shop .
